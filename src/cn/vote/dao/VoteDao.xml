@@ -32,4 +32,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <insert id="addParticipate" parameterType="participate">
         INSERT INTO participate VALUES(DEFAULT,#{voteId},#{userId})
     </insert>
+    <insert id="addVote" parameterType="vote">
+        INSERT INTO vote VALUES(DEFAULT,#{voteTitle},#{voteDescribe},#{voteOptionMax},#{user.userId}
+        ,0,0,now())
+    </insert>
 </mapper>

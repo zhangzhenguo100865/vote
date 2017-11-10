@@ -35,4 +35,9 @@ public class VoteServiceImpl implements VoteService{
         participate.setVoteId(voteId);
         voteDao.addParticipate(participate);
     }
+
+    @Override
+    public int addVote() {
+        return 0;
+    }
 }

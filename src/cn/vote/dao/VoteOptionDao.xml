@@ -9,6 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       WHERE voteOptionID=#{voteOptionId}
 </select>
     <insert id="addVoteDetailed" parameterType="voteDetailed">
+        <selectKey resultType="int" order="AFTER"  keyProperty="voteDetailedId">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         INSERT INTO votedetailed VALUES(DEFAULT,#{voteOptionId},#{userId})
     </insert>
 </mapper>

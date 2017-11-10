@@ -13,4 +13,5 @@ public interface VoteService {
     List<Vote> getVotes(Vote vote);
 
     void vote(String[] opts,Integer voteId,Integer uid);
+    int addVote();
 }

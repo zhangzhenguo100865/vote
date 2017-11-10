@@ -2,6 +2,7 @@ package cn.vote.controller;
 
 import cn.vote.pojo.User;
 import cn.vote.pojo.Vote;
+import cn.vote.pojo.VoteOption;
 import cn.vote.service.VoteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,5 +35,11 @@ public class VoteController {
         User user=(User)session.getAttribute("u");
         voteService.vote(opts,voteId,user.getUserId());
         return opts.length+"";
+    }
+    @RequestMapping("/faqi.do")
+    public String faqi(String[] opts,Vote vote,HttpSession session){
+        User user=(User)session.getAttribute("u");
+        vote.setUser(user);
+        return "index";
     }
 }

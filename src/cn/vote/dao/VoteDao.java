@@ -30,4 +30,6 @@ public interface VoteDao {
     List<User> selectUsersByVoteId(int voteId);
 
     int addParticipate(Participate participate);
+
+    int addVote(Vote vote);
 }

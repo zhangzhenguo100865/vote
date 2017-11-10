@@ -148,19 +148,34 @@
                     <hr>
                     <p></p>
                 </article>
-                <form id="contact-form" class="row" action="#" method="post">
+                <form id="contact-form" class="row" action="faqi.do" method="post">
                     <div class="span2">
                         <label for="name">投票标题<span>*</span> </label>
                     </div>
                     <div class="span6">
-                        <input type="text" name="name"  class=" input-xlarge" value=""
-                               title="* Please provide your name">
+                        <input type="text" name="voteTitle"  class=" input-xlarge">
                     </div>
                     <div class="span2">
-                        <label for="reason">投票内容 </label>
+                        <label for="reason">投票描述</label>
                     </div>
                     <div class="span6">
-                        <input type="text" name="reason"  class="input-xlarge" value="">
+                        <input type="text" name="voteDescribe"  class="input-xlarge" value="">
+                    </div>
+                    <div class="span2">
+                        <label for="name">投票选项<span>*</span> </label>
+                    </div>
+                    <div class="span6 jia" >
+                        <input type="text" name="opts" class=" input-xlarge opts">
+                        <input type="text" name="opts"  class=" input-xlarge">
+                    </div>
+                    <div class="span6">
+                    <input type="button" onclick="jia(this)" value="添加更多">
+                    </div>
+                    <div class="span2">
+                        <label for="reason">最大选项</label>
+                    </div>
+                    <div class="span6">
+                        <input type="text" name="voteOptionMax"  class="input-xlarge" value="">
                     </div>
                     <div class="span6 offset2 bm30">
                         <input type="submit" name="submit" value="发起" class="btn btn-inverse">
@@ -224,7 +239,18 @@
 <script type='text/javascript' src='../../js/jquery.formd471.js?ver=3.18'></script>
 <script type='text/javascript' src='../../js/jquery.validate.minfc6b.js?ver=1.10.0'></script>
 <script type='text/javascript' src='../../js/custom5152.js?ver=1.0'></script>
+<script>
+    $(function () {
 
+    });
+    function jia(this_) {
+        var opts=$(".opts:eq(0)").clone();
+        opts.val("");
+        var $jia = $(".jia");
+        $jia.append($("<br/>"));
+        $jia.append(opts);
+    }
+</script>
 </body>
 </html>
 
