@@ -163,7 +163,7 @@
                         <input type="text" name="reason"  class="input-xlarge" value="">
                     </div>
                     <div class="span6 offset2 bm30">
-                        <input type="submit" name="submit" value="登陆" class="btn btn-inverse">
+                        <input type="submit" name="submit" value="发起" class="btn btn-inverse">
                     </div>
                     <div class="span6 offset2 error-container"></div>
                     <div class="span8 offset2"></div>
