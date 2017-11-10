@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="information_schema"/>
+    <schema id="3" parent="1" name="mysql"/>
+    <schema id="4" parent="1" name="hosedb">
+      <Current>1</Current>
+    </schema>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="sys"/>
+    <schema id="7" parent="1" name="votedb">
+      <Visible>1</Visible>
+    </schema>
+    <table id="8" parent="7" name="participate"/>
+    <table id="9" parent="7" name="user"/>
+    <table id="10" parent="7" name="vote"/>
+    <table id="11" parent="7" name="votedetailed"/>
+    <table id="12" parent="7" name="voteoption"/>
+    <column id="13" parent="8" name="participateID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="14" parent="8" name="voteID">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="15" parent="8" name="userID">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="16" parent="8" name="participate_user_userId_fk">
+      <ColNames>userID</ColNames>
+    </index>
+    <key id="17" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>participateID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="18" parent="8" name="participate_user_userId_fk">
+      <ColNames>userID</ColNames>
+      <RefSchemaName>votedb</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>userId</RefColNames>
+    </foreign-key>
+    <column id="19" parent="9" name="userId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="20" parent="9" name="userName">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="9" name="password">
+      <Position>3</Position>
+      <DataType>varchar(16)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="22" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>userId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="23" parent="10" name="voteId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="24" parent="10" name="voteTitle">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="10" name="voteDescribe">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="10" name="voteOptionMax">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="10" name="userId">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="10" name="votestate">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="10" name="anonymous">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="10" name="voteDate">
+      <Position>8</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <key id="31" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>voteId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="32" parent="11" name="voteDetailedID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="33" parent="11" name="voteOptionID">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="11" name="userID">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="35" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>voteDetailedID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="36" parent="12" name="voteOptionID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="37" parent="12" name="voteOptionTitle">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="12" name="voteID">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="39" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>voteOptionID</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

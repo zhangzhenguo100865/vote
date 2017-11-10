@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.vote.dao.VoteDao">
+    <resultMap id="votes" type="vote">
+        <result property="voteId" column="voteId"></result>
+        <collection property="voteOptions" column="voteId" select="selectOptionsByVoteID"/>
+        <collection property="users" column="voteId" select="selectUsersByVoteId"/>
+    </resultMap>
+<select id="select" resultMap="votes" parameterType="vote">
+    SELECT * FROM votedb.vote
+    <where>
+        <if test="voteId!=null and voteId>1">
+            and voteId=#{voteId}
+        </if>
+    </where>
+</select>
+    <resultMap id="opts" type="voteOption">
+        <result property="voteOptionId" column="voteOptionId"></result>
+        <collection property="users" column="voteOptionId" select="cn.vote.dao.VoteOptionDao.selectUsersByVoteOptionId"/>
+    </resultMap>
+<select id="selectOptionsByVoteID" resultMap="opts" parameterType="int">
+    SELECT * FROM votedb.voteoption WHERE voteID=#{voteId}
+</select>
+ <select id="selectUsersByVoteId" resultType="user" parameterType="int">
+   SELECT u.userId,u.userName,u.password
+     FROM votedb.user u JOIN votedb.participate p
+     on u.userId = p.userID
+     WHERE p.voteID=#{voteId}
+ </select>
+    <insert id="addParticipate" parameterType="participate">
+        INSERT INTO participate VALUES(DEFAULT,#{voteId},#{userId})
+    </insert>
+</mapper>

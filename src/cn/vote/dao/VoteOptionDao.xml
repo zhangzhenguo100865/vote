@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.vote.dao.VoteOptionDao">
+<select id="selectUsersByVoteOptionId" resultType="user" parameterType="int">
+    SELECT u.userId,u.userName,u.password
+     FROM votedb.user u  JOIN votedb.votedetailed v ON u.userId=v.userID
+      WHERE voteOptionID=#{voteOptionId}
+</select>
+    <insert id="addVoteDetailed" parameterType="voteDetailed">
+        INSERT INTO votedetailed VALUES(DEFAULT,#{voteOptionId},#{userId})
+    </insert>
+</mapper>
