@@ -5,6 +5,7 @@ import cn.vote.dao.VoteOptionDao;
 import cn.vote.pojo.Participate;
 import cn.vote.pojo.Vote;
 import cn.vote.pojo.VoteDetailed;
+import cn.vote.pojo.VoteOption;
 import cn.vote.service.VoteService;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +38,13 @@ public class VoteServiceImpl implements VoteService{
     }
 
     @Override
-    public int addVote() {
-        return 0;
+    public void addVote(String[] opts,Vote vote) {
+        voteDao.addVote(vote);
+        for (int i = 0; i < opts.length; i++) {
+            VoteOption voteOption=new VoteOption();
+            voteOption.setVoteId(vote.getVoteId());
+            voteOption.setVoteOptionTitle(opts[i]);
+            voteOptionDao.addOpt(voteOption);
+        }
     }
 }

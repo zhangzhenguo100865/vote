@@ -1,5 +1,6 @@
 package cn.vote.controller;
 
+import cn.vote.dao.VoteOptionDao;
 import cn.vote.pojo.User;
 import cn.vote.pojo.Vote;
 import cn.vote.pojo.VoteOption;
@@ -17,7 +18,6 @@ import java.util.List;
 public class VoteController {
     @Resource
     private VoteService voteService;
-
     @RequestMapping("/index.do")
     public String index(HttpServletRequest request){
         request.setAttribute("votes",voteService.getVotes(null));
@@ -37,9 +37,10 @@ public class VoteController {
         return opts.length+"";
     }
     @RequestMapping("/faqi.do")
-    public String faqi(String[] opts,Vote vote,HttpSession session){
+    public String faqi(String[] opts,Vote vote,HttpSession session,HttpServletRequest request){
         User user=(User)session.getAttribute("u");
         vote.setUser(user);
-        return "index";
+        voteService.addVote(opts,vote);
+        return "redirect:index.do?ms=1";
     }
 }

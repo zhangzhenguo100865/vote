@@ -21,4 +21,9 @@ public class UserController {
         request.setAttribute("ms","用户名或密码错误");
         return "index";
     }
+    @RequestMapping("/logout.do")
+    public String logout(HttpServletRequest request){
+        request.getSession().setAttribute("u",null);
+        return "redirect:index.do";
+    }
 }

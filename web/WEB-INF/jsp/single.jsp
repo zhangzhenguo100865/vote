@@ -60,7 +60,7 @@
 
             <div class="logo-container">
                 <!-- Website Logo -->
-                <a href="index.html" title="迷你投票系统">
+                <a href="index.do" title="迷你投票系统">
                     <img src="../../images/logo.png" alt="Knowledge Base Theme">
                 </a>
                 <span class="tag-line"></span>
@@ -74,8 +74,8 @@
                         <li class="current-menu-item"><a href="index-2.html">Home</a></li>
                         <li><a href="#">${u.userName}</a>
                             <ul class="sub-menu">
-                                <li><a href="full-width.html">退出</a></li>
-                                <li><a href="elements.html">注销</a></li>
+                                <li><a href="logout.do">退出</a></li>
+                                <li><a href="logout.do">注销</a></li>
                             </ul>
                         </li>
                         <li><a href="contact.html">登录</a></li>
@@ -119,7 +119,7 @@
                     <h1 class="post-title"><a href="#">${vote1.voteTitle}</a></h1>
 
                     <div class="post-meta clearfix">
-                        <span class="date">${vote1.voteDate}</span>
+                        <span class="date">${vote1.voteDate}-----每人最多选择${vote1.voteOptionMax}项</span>
                         <span class="like-count">${fn:length(vote1.users)}人参与</span>
                     </div><!-- end of post meta -->
                     <p>${vote1.voteDescribe}</p>
@@ -216,7 +216,7 @@
                     <ul class="articles">
                         <c:forEach items="${votes}" var="v">
                             <li class="article-entry video">
-                                <h4><a href="single.do?voteId=${v.voteId}">${v.voteTitle}${v.voteId}</a></h4>
+                                <h4><a href="single.do?voteId=${v.voteId}">${v.voteTitle}</a></h4>
                                 <span class="article-meta">${v.voteDate}</span>
                                 <span class="like-count">${fn:length(v.users)}</span>
                             </li>

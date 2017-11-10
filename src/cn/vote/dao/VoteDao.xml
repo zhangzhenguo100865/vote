@@ -33,6 +33,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         INSERT INTO participate VALUES(DEFAULT,#{voteId},#{userId})
     </insert>
     <insert id="addVote" parameterType="vote">
+        <selectKey resultType="int" order="AFTER"  keyProperty="voteId">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         INSERT INTO vote VALUES(DEFAULT,#{voteTitle},#{voteDescribe},#{voteOptionMax},#{user.userId}
         ,0,0,now())
     </insert>

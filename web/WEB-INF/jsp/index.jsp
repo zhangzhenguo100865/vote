@@ -57,7 +57,7 @@
 
             <div class="logo-container">
                 <!-- Website Logo -->
-                <a href="index.html" title="迷你投票系统">
+                <a href="index.do" title="迷你投票系统">
                     <img src="../../images/logo.png" alt="Knowledge Base Theme">
                 </a>
                 <span class="tag-line"></span>
@@ -71,8 +71,8 @@
                         <li class="current-menu-item"><a href="index-2.html">Home</a></li>
                         <li><a href="#">${u.userName}</a>
                             <ul class="sub-menu">
-                                <li><a href="full-width.html">退出</a></li>
-                                <li><a href="elements.html">注销</a></li>
+                                <li><a href="logout.do">退出</a></li>
+                                <li><a href="logout.do">注销</a></li>
                             </ul>
                         </li>
                         <li><a href="contact.html">登录</a></li>
@@ -148,7 +148,7 @@
                     <hr>
                     <p></p>
                 </article>
-                <form id="contact-form" class="row" action="faqi.do" method="post">
+                <form class="row" action="faqi.do" method="post">
                     <div class="span2">
                         <label for="name">投票标题<span>*</span> </label>
                     </div>
@@ -162,6 +162,12 @@
                         <input type="text" name="voteDescribe"  class="input-xlarge" value="">
                     </div>
                     <div class="span2">
+                        <label for="reason">最大选项</label>
+                    </div>
+                    <div class="span6">
+                        <input type="text" name="voteOptionMax"  class="input-xlarge" value="">
+                    </div>
+                    <div class="span2">
                         <label for="name">投票选项<span>*</span> </label>
                     </div>
                     <div class="span6 jia" >
@@ -171,12 +177,7 @@
                     <div class="span6">
                     <input type="button" onclick="jia(this)" value="添加更多">
                     </div>
-                    <div class="span2">
-                        <label for="reason">最大选项</label>
-                    </div>
-                    <div class="span6">
-                        <input type="text" name="voteOptionMax"  class="input-xlarge" value="">
-                    </div>
+
                     <div class="span6 offset2 bm30">
                         <input type="submit" name="submit" value="发起" class="btn btn-inverse">
                     </div>
@@ -194,7 +195,7 @@
                     <ul class="articles">
                         <c:forEach items="${votes}" var="v">
                             <li class="article-entry video">
-                                <h4><a href="single.do?voteId=${v.voteId}">${v.voteTitle}${v.voteId}</a></h4>
+                                <h4><a href="single.do?voteId=${v.voteId}">${v.voteTitle}</a></h4>
                                 <span class="article-meta">${v.voteDate}</span>
                                 <span class="like-count">${fn:length(v.users)}</span>
                             </li>
@@ -241,7 +242,12 @@
 <script type='text/javascript' src='../../js/custom5152.js?ver=1.0'></script>
 <script>
     $(function () {
-
+        var ms='${ms}';
+        if(ms!=null&&ms!=''){
+            if(ms==1){
+                alert("新增成功")
+            }
+        }
     });
     function jia(this_) {
         var opts=$(".opts:eq(0)").clone();

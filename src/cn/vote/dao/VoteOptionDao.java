@@ -18,4 +18,5 @@ public interface VoteOptionDao {
 
     int addVoteDetailed(VoteDetailed voteDetailed);
 
+    int addOpt(VoteOption voteOption);
 }

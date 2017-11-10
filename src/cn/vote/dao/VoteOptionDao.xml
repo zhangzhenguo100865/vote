@@ -14,4 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </selectKey>
         INSERT INTO votedetailed VALUES(DEFAULT,#{voteOptionId},#{userId})
     </insert>
+    <insert id="addOpt" parameterType="voteOption">
+        INSERT INTO voteOption VALUES(DEFAULT,#{voteOptionTitle},#{voteId})
+    </insert>
 </mapper>
